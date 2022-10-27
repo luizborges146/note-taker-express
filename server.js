@@ -21,14 +21,15 @@ app.get('/api/notes', (req,res) => {
     const dNotes = fs.readFile(path.join(__dirname,"./db/db.jsib"), "utf-8");
     const parseNotes = JSON.parse(dNotes);
     res.json(parseNotes);
-})
+});
 
 app.post('/api/notes', (req,res) => {
     const dNotes = fs.readFile(path.join(__dirname,"./db/db.jsib"), "utf-8");
     const parseNotes = JSON.parse(dNotes);
     req.body.id = uuidv4();
     parseNotes.push(req.body);
-}
 
+    fs.writeFileSync(path.join(__dirname, "./db/db.json"), JSON.stringify(parseNotes), "utf-8");
+    res.json("You added a note successfully!");
 
-
+});
