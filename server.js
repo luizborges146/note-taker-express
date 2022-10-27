@@ -1,3 +1,4 @@
+const fs = require("fs");
 const express = require("express");
 const path = require("path");
 const {v4:uuidv4} = require('uuid');
@@ -31,5 +32,3 @@ app.post('/api/notes', (req,res) => {
 
 
 
-// req.body.id = uuidv4();
-// parseNotes
