@@ -32,3 +32,11 @@ app.post('/api/notes', (req,res) => {
     fs.writeFileSync(path.join(__dirname, "./db/db.json"), JSON.stringify(parseNotes), "utf-8");
     res.json("You added a note successfully!");
 });
+
+app.get('*', (req,res) => res.sendFile(path.join(__dirname, './public/index.html')));
+
+
+
+
+app.listen(PORT,() => console.log(`App listening at http://localhost:${PORT} 🚀`));
+
