@@ -34,26 +34,24 @@ app.post('/api/notes', (req,res) => {
     res.json("You added a note successfully!");
 });
 
-app.get('*', (req,res) => res.sendFile(path.join(__dirname, './public/index.html')));
+app.delete("/api/notes/:id", function (req, res) {
 
-app.delete("/api/notes/:id",(req,res) => {
-    
-    let delNotes = parseInt(req.params.id);
+    let data = fs.readFileSync("./db/db.json", "utf8");
 
-    for(let i = 0; i < databaseJson.length; i++) {
-        if (delNotes === databaseJson[i].id) {
-            databaseJson.splice(i,1)
+    const dataJSON = JSON.parse(data);
 
-            let noteJson = JSON.stringify(databaseJson,null,2);
+    const newNotes = dataJSON.filter((note) => {
+        return note.id !== req.params.id;
+      });
 
-            fs.writeFile("./db/db.json", noteJson, function(err) {
-                if(err) throw err;
-                console.log("The note selected has been deleted!");
-                res.json(databaseJson)
-            })
+      fs.writeFile( "./db/db.json",JSON.stringify(newNotes),(err, text) => {
+        if (err) {
+          console.error(err);
+          return;
         }
-    }
-})
+      });
+      res.json(newNotes);
+});
 
 
 app.listen(PORT,() => console.log(`App listening at http://localhost:${PORT} 🚀`));
