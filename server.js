@@ -14,28 +14,27 @@ const app = express();
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
-
 app.get('/notes', (req,res) => res.sendFile(path.join(__dirname, "./public/notes.html")));
-
+// ROUTING
 app.get('/api/notes', (req,res) => {
     const dNotes = fs.readFileSync(path.join(__dirname,"./db/db.json"), "utf-8");
     const parseNotes = JSON.parse(dNotes);
     res.json(parseNotes);
 });
-
+//Post request
 app.post('/api/notes', (req,res) => {
     const dNotes = fs.readFileSync(path.join(__dirname,"./db/db.json"), "utf-8");
     const parseNotes = JSON.parse(dNotes);
     req.body.id = uuidv4();
     parseNotes.push(req.body);
 
+    // Add the information to 'db.json' file
     fs.writeFileSync(path.join(__dirname, "./db/db.json"), JSON.stringify(parseNotes), "utf-8");
     res.json("You added a note successfully!");
 });
-
+// Delete request
 app.delete("/api/notes/:id", function (req, res) {
 
     let data = fs.readFileSync("./db/db.json", "utf8");
