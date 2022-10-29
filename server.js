@@ -1,3 +1,4 @@
+// Dependencies
 const fs = require("fs");
 const express = require("express");
 const path = require("path");
@@ -6,6 +7,7 @@ const {v4:uuidv4} = require('uuid');
 //to access the DB folder, file db.json
 const databaseJson = require("./db/db.json");
 
+// Sets up the Express APP
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -19,7 +21,7 @@ app.use(express.static("public"));
 app.get('/notes', (req,res) => res.sendFile(path.join(__dirname, "./public/notes.html")));
 
 app.get('/api/notes', (req,res) => {
-    const dNotes = fs.readFileSync(path.join(__dirname,"./db/db.jsib"), "utf-8");
+    const dNotes = fs.readFileSync(path.join(__dirname,"./db/db.json"), "utf-8");
     const parseNotes = JSON.parse(dNotes);
     res.json(parseNotes);
 });
