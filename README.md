@@ -1,8 +1,8 @@
 # Note Taker Express
 
-Link to [GitHub repository](https://github.com/luizborges146/note-taker-express)<br />
-[Deployed Link GitHub](https://luizborges146.github.io/note-taker-express/) - This link it will show the README.md in the web.<br />
-[Deployed Link Heroku](https://note-taker-expre.herokuapp.com/notes)<br />
+* [GitHub repository](https://github.com/luizborges146/note-taker-express)<br />
+* [Deployed Link GitHub](https://luizborges146.github.io/note-taker-express/) - This link it will show the README.md in the web.<br />
+* [Deployed Link Heroku](https://note-taker-expre.herokuapp.com/notes)<br />
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
