@@ -1,7 +1,8 @@
 # Note Taker Express
 
 Link to [GitHub repository](https://github.com/luizborges146/note-taker-express)
-[Deployed Link GitHub](https://luizborges146.github.io/team-profile-generator/)
+[Deployed Link GitHub](https://luizborges146.github.io/note-taker-express/)
+[Deployed Link Heroku](https://note-taker-expre.herokuapp.com/notes)
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
